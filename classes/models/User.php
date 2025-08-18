@@ -1,7 +1,5 @@
 <?php
 
-use Validator;
-
 class User {
     private $userID;
     private $name;

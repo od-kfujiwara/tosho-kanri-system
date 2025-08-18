@@ -1,10 +1,5 @@
 <?php
 
-use Exception;
-use UserRepository;
-use User;
-use LoanRepository;
-
 class UserService {
     private $userRepository;
 

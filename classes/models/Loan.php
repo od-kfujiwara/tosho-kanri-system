@@ -1,10 +1,5 @@
 <?php
 
-use Exception;
-use DateTime;
-use DateInterval;
-use Validator;
-
 class Loan {
     private $loanID;
     private $userID;

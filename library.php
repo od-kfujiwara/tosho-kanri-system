@@ -1,11 +1,5 @@
 <?php
 
-use Exception;
-use CommandParser;
-use BookCommand;
-use UserCommand;
-use LoanCommand;
-
 // Include all necessary classes
 require_once 'classes/utils/CsvHandler.php';
 require_once 'classes/utils/CommandParser.php';
@@ -69,37 +63,37 @@ function main($argv) {
             showUsage();
             return;
         }
-        
+
         $parser = new CommandParser($argv);
         $parser->validate();
-        
+
         $entity = $parser->getEntity();
         $action = $parser->getAction();
         $options = $parser->getAllOptions();
-        
+
         switch ($entity) {
             case 'book':
                 $command = new BookCommand();
                 $command->execute($action, $options);
                 break;
-                
+
             case 'user':
                 $command = new UserCommand();
                 $command->execute($action, $options);
                 break;
-                
+
             case 'loan':
                 $command = new LoanCommand();
                 $command->execute($action, $options);
                 break;
-                
+
             default:
                 throw new Exception("無効なエンティティ: " . $entity);
         }
-        
+
     } catch (Exception $e) {
         echo "エラー: " . $e->getMessage() . "\n\n";
-        
+
         // Show usage for common errors
         if (strpos($e->getMessage(), "エンティティを指定") !== false ||
             strpos($e->getMessage(), "アクションを指定") !== false ||
